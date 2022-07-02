@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{% block title %} Welcome to FlaskNotes {% endblock %}</h1>
+{% for note in notes %}
+<div id="card-{{note['id']}}">
+	<div class="card">
+		<button class="btn btn-default card-body text-justify d-block" onclick="onOpen({{note['id']}})">
+			<span class="badge badge-primary">#{{ note['id'] }}</span>
+			<span class="btn btn-danger badge badge-danger" onclick="onDelete({{note['id']}})">Delete</span>
+			<a class="btn btn-success badge badge-success" href="/{{note['id']}}/edit">Edit</a>
+			<span class="badge badge-default">{{ note['created'] }}</span>
+			<hr>
+			<p>{{ note['content'] | safe }}</p>
+		</button>
+	</div>
+	<hr>
+</div>
+{% endfor %}
+<script>
+	function onDelete(id) {
+			fetch('/' + id, { method: 'DELETE' }).then(() => {
+		document.getElementById('card-' + id).remove();
+				});
+		}
+
+	function onOpen(id) {
+			window.location.href = '/' + id;
+		}
+</script>
+{% endblock %}

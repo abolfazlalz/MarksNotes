@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form method="post">
+	<label for="content" class="form-label">Content</label>
+	<textarea name="content" class="form-control" id="content-text" rows="10">{{note['content']}}</textarea>
+	<button class="btn btn-primary mt-2">Click me</button>
+</form>
+{% endblock %}
