@@ -77,4 +77,4 @@ def create():
         connection.commit()
         connection.close()
         return redirect('/')
-    return render_template('create.html')
+    return render_template('create.html', note={'content': ''})
