@@ -1,6 +1,6 @@
 /.env
 
 *.swp
-*.database
+*.db
 *.pyc
 
